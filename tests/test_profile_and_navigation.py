@@ -27,10 +27,9 @@ class TestProfileAndNavigation:
 
         driver.find_element(*MainPageLocators.PROFILE_BUTTON).click()
 
-        logout_button = WebDriverWait(driver, 5).until(
+        assert WebDriverWait(driver, 5).until(
             expected_conditions.visibility_of_element_located(ProfilePageLocators.LOGOUT_BUTTON)
-        )
-        assert logout_button.is_displayed()
+        ).is_displayed()
         assert driver.current_url == Urls.PROFILE_URL
 
     def test_navigate_from_profile_to_constructor_via_button(self, driver, registered_user):
@@ -55,10 +54,9 @@ class TestProfileAndNavigation:
 
         driver.find_element(*MainPageLocators.CONSTRUCTOR_BUTTON).click()
 
-        order_button = WebDriverWait(driver, 5).until(
+        assert WebDriverWait(driver, 5).until(
             expected_conditions.visibility_of_element_located(MainPageLocators.CREATE_ORDER_BUTTON)
-        )
-        assert order_button.is_displayed()
+        ).is_displayed()
         assert driver.current_url == Urls.BASE_URL
 
     def test_navigate_from_profile_to_constructor_via_logo(self, driver, registered_user):
@@ -83,8 +81,7 @@ class TestProfileAndNavigation:
 
         driver.find_element(*MainPageLocators.LOGO).click()
 
-        order_button = WebDriverWait(driver, 5).until(
+        assert WebDriverWait(driver, 5).until(
             expected_conditions.visibility_of_element_located(MainPageLocators.CREATE_ORDER_BUTTON)
-        )
-        assert order_button.is_displayed()
+        ).is_displayed()
         assert driver.current_url == Urls.BASE_URL

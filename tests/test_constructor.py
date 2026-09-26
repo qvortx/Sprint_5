@@ -14,10 +14,9 @@ class TestConstructor:
         )
         sauces_tab.click()
 
-        active_tab = WebDriverWait(driver, 5).until(
-            expected_conditions.visibility_of_element_located(MainPageLocators.ACTIVE_TAB)
+        assert WebDriverWait(driver, 5).until(
+            expected_conditions.text_to_be_present_in_element(MainPageLocators.ACTIVE_TAB, "Соусы")
         )
-        assert active_tab.text == "Соусы"
 
     def test_switch_to_fillings_tab(self, driver):
         driver.get(Urls.BASE_URL)
@@ -27,10 +26,9 @@ class TestConstructor:
         )
         fillings_tab.click()
 
-        active_tab = WebDriverWait(driver, 5).until(
-            expected_conditions.visibility_of_element_located(MainPageLocators.ACTIVE_TAB)
+        assert WebDriverWait(driver, 5).until(
+            expected_conditions.text_to_be_present_in_element(MainPageLocators.ACTIVE_TAB, "Начинки")
         )
-        assert active_tab.text == "Начинки"
 
     def test_switch_to_buns_tab(self, driver):
         driver.get(Urls.BASE_URL)
@@ -49,7 +47,6 @@ class TestConstructor:
         )
         buns_tab.click()
 
-        active_tab = WebDriverWait(driver, 5).until(
-            expected_conditions.visibility_of_element_located(MainPageLocators.ACTIVE_TAB)
+        assert WebDriverWait(driver, 5).until(
+            expected_conditions.text_to_be_present_in_element(MainPageLocators.ACTIVE_TAB, "Булки")
         )
-        assert active_tab.text == "Булки"

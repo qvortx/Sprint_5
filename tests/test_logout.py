@@ -32,8 +32,7 @@ class TestLogout:
         )
         logout_btn.click()
 
-        login_button = WebDriverWait(driver, 5).until(
+        assert WebDriverWait(driver, 5).until(
             expected_conditions.visibility_of_element_located(LoginPageLocators.LOGIN_BUTTON)
-        )
-        assert login_button.is_displayed()
+        ).is_displayed()
         assert driver.current_url == Urls.LOGIN_URL

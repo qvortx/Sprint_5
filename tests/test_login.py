@@ -25,13 +25,11 @@ class TestLogin:
 
         driver.find_element(*LoginPageLocators.EMAIL_INPUT).send_keys(registered_user["email"])
         driver.find_element(*LoginPageLocators.PASSWORD_INPUT).send_keys(registered_user["password"])
-
         driver.find_element(*LoginPageLocators.LOGIN_BUTTON).click()
 
-        order_button = WebDriverWait(driver, 5).until(
+        assert WebDriverWait(driver, 5).until(
             expected_conditions.visibility_of_element_located(MainPageLocators.CREATE_ORDER_BUTTON)
-        )
-        assert order_button.is_displayed()
+        ).is_displayed()
 
     def test_login_from_profile_button_in_header(self, driver, registered_user):
         driver.get(Urls.BASE_URL)
@@ -47,12 +45,11 @@ class TestLogin:
 
         driver.find_element(*LoginPageLocators.EMAIL_INPUT).send_keys(registered_user["email"])
         driver.find_element(*LoginPageLocators.PASSWORD_INPUT).send_keys(registered_user["password"])
-
         driver.find_element(*LoginPageLocators.LOGIN_BUTTON).click()
-        order_button = WebDriverWait(driver, 5).until(
+
+        assert WebDriverWait(driver, 5).until(
             expected_conditions.visibility_of_element_located(MainPageLocators.CREATE_ORDER_BUTTON)
-        )
-        assert order_button.is_displayed()
+        ).is_displayed()
 
     def test_login_from_registration_form(self, driver, registered_user):
         driver.get(Urls.REGISTER_URL)
@@ -68,13 +65,11 @@ class TestLogin:
 
         driver.find_element(*LoginPageLocators.EMAIL_INPUT).send_keys(registered_user["email"])
         driver.find_element(*LoginPageLocators.PASSWORD_INPUT).send_keys(registered_user["password"])
-
         driver.find_element(*LoginPageLocators.LOGIN_BUTTON).click()
 
-        order_button = WebDriverWait(driver, 5).until(
+        assert WebDriverWait(driver, 5).until(
             expected_conditions.visibility_of_element_located(MainPageLocators.CREATE_ORDER_BUTTON)
-        )
-        assert order_button.is_displayed()
+        ).is_displayed()
 
     def test_login_from_forgot_password_form(self, driver, registered_user):
         driver.get(Urls.FORGOT_PASSWORD_URL)
@@ -90,10 +85,8 @@ class TestLogin:
 
         driver.find_element(*LoginPageLocators.EMAIL_INPUT).send_keys(registered_user["email"])
         driver.find_element(*LoginPageLocators.PASSWORD_INPUT).send_keys(registered_user["password"])
-
         driver.find_element(*LoginPageLocators.LOGIN_BUTTON).click()
 
-        order_button = WebDriverWait(driver, 5).until(
+        assert WebDriverWait(driver, 5).until(
             expected_conditions.visibility_of_element_located(MainPageLocators.CREATE_ORDER_BUTTON)
-        )
-        assert order_button.is_displayed()
+        ).is_displayed()
